@@ -1,0 +1,10 @@
+# Système
+.DS_Store
+Thumbs.db
+
+# Outils
+node_modules/
+*.log
+
+# Déploiement
+.vercel/

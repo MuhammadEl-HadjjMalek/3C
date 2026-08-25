@@ -1,0 +1,467 @@
+/* =============================================================================
+   3C — Composants
+   Boutons pilules, cartes arrondies, formulaire, accordéon FAQ, visionneuse,
+   boutons flottants.
+   ========================================================================== */
+
+/* --- Boutons -------------------------------------------------------------- */
+/* Les boutons portent un reflet : un léger dégradé « verre » permanent et un
+   éclat qui balaie la surface au survol. */
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 14px 30px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: transform var(--transition), background-color var(--transition),
+              color var(--transition), border-color var(--transition),
+              box-shadow var(--transition);
+}
+
+/* Reflet permanent : plus clair en haut, plus dense en bas */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .28), rgba(255, 255, 255, 0) 55%);
+  pointer-events: none;
+}
+
+/* Éclat qui balaie le bouton au survol */
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 60%;
+  height: 100%;
+  transform: translateX(-180%) skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .55), transparent);
+  pointer-events: none;
+}
+
+.btn:hover::after,
+.btn:focus-visible::after {
+  transform: translateX(280%) skewX(-20deg);
+  transition: transform .75s cubic-bezier(.25, .8, .35, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn::after { display: none; }
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(238, 155, 0, .28), inset 0 1px 0 rgba(255, 255, 255, .35);
+}
+
+.btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(238, 155, 0, .38), inset 0 1px 0 rgba(255, 255, 255, .45);
+}
+
+/* Contour « argenté » : un liseré clair et un fond très légèrement métallique */
+.btn--outline {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: linear-gradient(160deg, rgba(255, 255, 255, .9), rgba(226, 234, 235, .55));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9);
+}
+
+:root[data-theme="dark"] .btn--outline {
+  background: linear-gradient(160deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, .02));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14);
+}
+
+.btn--outline:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0, 95, 115, .28);
+}
+
+/* CTA dégradé de l'en-tête */
+.btn--gradient {
+  padding: 11px 24px;
+  font-size: .9375rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  white-space: nowrap;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28);
+}
+
+.btn--gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(10, 147, 150, .35), inset 0 1px 0 rgba(255, 255, 255, .35);
+}
+
+.btn--submit {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28);
+}
+
+.btn--submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(10, 147, 150, .3), inset 0 1px 0 rgba(255, 255, 255, .35);
+}
+
+/* Bouton clair posé sur un fond coloré */
+.btn--on-brand {
+  background: rgba(255, 255, 255, .14);
+  border-color: rgba(255, 255, 255, .45);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3);
+}
+
+.btn--on-brand:hover { background: rgba(255, 255, 255, .24); transform: translateY(-2px); }
+
+/* --- Boutons icône (thème / langue) --------------------------------------- */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: .9375rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.icon-btn:hover { background: var(--light); color: var(--secondary); }
+
+.icon-btn--lang {
+  width: auto;
+  padding-inline: 14px;
+  border-radius: var(--radius-pill);
+  font-size: .8125rem;
+  font-weight: 600;
+}
+
+/* --- Cartes --------------------------------------------------------------- */
+.card {
+  padding: 2.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+.card h3 { margin-bottom: .625rem; }
+.card p { color: var(--text-muted); }
+
+/* Carte centrée (vision / mission / valeurs) */
+.card--center { text-align: center; }
+
+/* Pastille d'icône */
+.card__icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--primary-tint);
+  color: var(--primary);
+  font-size: 1.35rem;
+}
+
+.card--center .card__icon { margin-inline: auto; }
+
+/* Carte à liseré ambre (réalisations) */
+.card--accent { border-top: 4px solid var(--accent); }
+
+/* --- Formulaire ----------------------------------------------------------- */
+.form { display: grid; gap: 1.125rem; }
+.field { display: grid; gap: .375rem; }
+
+.field label {
+  font-size: .9375rem;
+  font-weight: 500;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-size: 1rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.field input::placeholder,
+.field textarea::placeholder { color: var(--text-muted); opacity: .75; }
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px var(--secondary-tint);
+}
+
+.field textarea { resize: vertical; min-height: 140px; }
+
+.form-status {
+  min-height: 1.4em;
+  font-weight: 500;
+  font-size: .9375rem;
+}
+
+.form-status[data-state="success"] { color: var(--secondary); }
+.form-status[data-state="error"]   { color: #e5484d; }
+
+/* --- Accordéon FAQ -------------------------------------------------------- */
+.accordion { max-width: 52rem; margin-inline: auto; }
+
+.accordion__item {
+  margin-bottom: .9375rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 18px 22px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.accordion__trigger:hover { background: var(--primary-dark); }
+
+:root[data-theme="dark"] .accordion__trigger { color: #04222a; }
+
+.accordion__icon {
+  flex-shrink: 0;
+  font-size: .875rem;
+  transition: transform var(--transition);
+}
+
+.accordion__trigger[aria-expanded="true"] .accordion__icon { transform: rotate(45deg); }
+
+.accordion__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease;
+}
+
+.accordion__panel p {
+  padding: 20px 22px;
+  color: var(--text-muted);
+}
+
+/* --- Boutons flottants ---------------------------------------------------- */
+.float-stack {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 800;
+  display: flex;
+  flex-direction: column;
+  gap: .625rem;
+}
+
+.float-btn {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: var(--shadow-md);
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.float-btn:hover { transform: translateY(-3px); }
+
+.float-btn--whatsapp { background: #25d366; color: #fff; }
+
+.float-btn--top {
+  background: var(--primary);
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.float-btn--top.is-visible { opacity: 1; visibility: visible; }
+
+/* --- Visionneuse d'image -------------------------------------------------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: none;
+  place-items: center;
+  padding: 1.5rem;
+  background: var(--overlay);
+  backdrop-filter: blur(6px);
+}
+
+.lightbox.is-open { display: grid; }
+
+.lightbox__stage {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.lightbox img {
+  max-width: min(100%, 1100px);
+  max-height: 80vh;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.lightbox__counter {
+  font-size: .875rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  color: rgba(255, 255, 255, .75);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Navigation précédent / suivant */
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.lightbox__nav:hover { background: rgba(255, 255, 255, .26); }
+
+/* Hors de l'image quand la place le permet */
+.lightbox__nav--prev { left: -4.25rem; }
+.lightbox__nav--next { right: -4.25rem; }
+
+.lightbox__nav--prev:hover { transform: translateY(-50%) translateX(-3px); }
+.lightbox__nav--next:hover { transform: translateY(-50%) translateX(3px); }
+
+@media (max-width: 1100px) {
+  .lightbox__nav--prev { left: .5rem; }
+  .lightbox__nav--next { right: .5rem; }
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.lightbox__close:hover { background: rgba(255, 255, 255, .24); }
+
+/* --- Lecteur vidéo en surimpression -------------------------------------- */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: none;
+  place-items: center;
+  padding: 1.5rem;
+  background: var(--overlay);
+  backdrop-filter: blur(8px);
+}
+
+.video-modal.is-open { display: grid; }
+
+.video-modal__frame {
+  width: min(100%, 960px);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: #000;
+}
+
+.video-modal video {
+  display: block;
+  width: 100%;
+  max-height: 78vh;
+  background: #000;
+}
+
+.video-modal__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.video-modal__close:hover { background: rgba(255, 255, 255, .26); }
+
+/* --- Apparition au défilement --------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}

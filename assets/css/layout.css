@@ -1,0 +1,312 @@
+/* =============================================================================
+   3C — Layout
+   Conteneur, rythme des sections, en-tête flottant « pill », pied de page.
+   ========================================================================== */
+
+.container {
+  width: min(94%, 1180px);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--section-y);
+  scroll-margin-top: var(--header-height);
+}
+
+.section--light { background: var(--light); }
+
+/* --- Titre de section (centré, comme à l'origine) ------------------------- */
+.section-title {
+  max-width: 46rem;
+  margin: 0 auto clamp(2.5rem, 1.5rem + 2.5vw, 3.75rem);
+  text-align: center;
+}
+
+.section-title h2 { font-size: var(--fs-h2); }
+
+.section-title p {
+  margin-top: .75rem;
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+}
+
+/* Petit trait ambre sous le titre : rappel du soulignement de navigation */
+.section-title h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin: 1rem auto 0;
+  border-radius: 10px;
+  background: var(--accent);
+}
+
+/* --- Grilles -------------------------------------------------------------- */
+.grid { display: grid; gap: var(--gap-lg); }
+.grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid--3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+/* =============================================================================
+   EN-TÊTE — barre flottante façon « pill »
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  width: min(94%, 1180px);
+  background: var(--header-bg);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition), border-color var(--transition),
+              box-shadow var(--transition);
+}
+
+.site-header.is-scrolled { box-shadow: var(--shadow-md); }
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: 10px 12px 10px 18px;
+}
+
+/* --- Logo ----------------------------------------------------------------- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.brand__mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  box-shadow: 0 0 0 2px var(--border);
+}
+
+.brand__name {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--primary);
+}
+
+.brand__tagline {
+  display: block;
+  font-size: .625rem;
+  font-weight: 500;
+  letter-spacing: .03em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* --- Navigation ----------------------------------------------------------- */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.nav-link {
+  position: relative;
+  display: block;
+  padding: 8px 0;
+  font-size: .9375rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: color var(--transition);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  border-radius: 10px;
+  background: var(--accent);
+  transition: width var(--transition);
+}
+
+.nav-link:hover { color: var(--secondary); }
+.nav-link:hover::after,
+.nav-link.is-active::after { width: 100%; }
+.nav-link.is-active { color: var(--accent-dark); }
+
+:root[data-theme="dark"] .nav-link.is-active { color: var(--accent); }
+
+/* --- Zone utilitaire : thème, langue, CTA --------------------------------- */
+.nav-utils {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.nav-divider {
+  width: 1px;
+  height: 26px;
+  margin-inline: 4px;
+  background: var(--border);
+}
+
+/* --- Bouton menu mobile --------------------------------------------------- */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--text);
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* --- Barre de progression de lecture -------------------------------------- */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  z-index: 1000;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+}
+
+/* =============================================================================
+   PIED DE PAGE
+   ========================================================================== */
+.site-footer {
+  background: var(--dark);
+  color: #cbd5e1;
+  padding-top: 5rem;
+}
+
+.site-footer h4 {
+  margin-bottom: 1.25rem;
+  font-size: .95rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 3rem 2rem;
+  padding-bottom: 3.75rem;
+}
+
+.footer-brand .brand__name { color: #fff; }
+.footer-brand .brand__tagline { color: #94a3b8; }
+.footer-brand .brand__mark { box-shadow: 0 0 0 2px rgba(255, 255, 255, .18); }
+
+.footer-brand > p {
+  margin-top: 1.25rem;
+  max-width: 34ch;
+  color: #94a3b8;
+  font-size: .95rem;
+}
+
+.footer-contact {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: .625rem;
+  font-size: .9rem;
+}
+
+.footer-contact li { display: flex; gap: .75rem; align-items: flex-start; }
+
+.footer-contact i {
+  margin-top: .45rem;
+  width: 1rem;
+  text-align: center;
+  font-size: .8rem;
+  color: var(--accent);
+}
+
+.footer-contact a { transition: color var(--transition); }
+.footer-contact a:hover { color: #fff; }
+
+.footer-nav { display: grid; gap: .625rem; font-size: .95rem; }
+.footer-nav a { color: #94a3b8; transition: color var(--transition); }
+.footer-nav a:hover { color: var(--accent); }
+
+.footer-soon {
+  display: inline-block;
+  margin-left: .5rem;
+  padding: .05rem .5rem;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: var(--radius-pill);
+  font-size: .625rem;
+  letter-spacing: .04em;
+  color: #64748b;
+  vertical-align: middle;
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 1.5rem;
+}
+
+.footer-socials a {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .16);
+  color: #cbd5e1;
+  transition: background-color var(--transition), color var(--transition),
+              border-color var(--transition), transform var(--transition);
+}
+
+.footer-socials a:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0b1120;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  font-size: .875rem;
+  color: #94a3b8;
+}
+
+.footer-bottom-links { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.footer-bottom-links a:hover { color: var(--accent); }

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>3C — Cadre de Concertation Citoyenne</title>
+  <meta name="description" content="Le Cadre de Concertation Citoyenne (3C) œuvre pour l'inclusion sociale, l'autonomisation et la participation active des personnes en situation de handicap au Sénégal.">
+  <meta name="theme-color" content="#005f73">
+  <link rel="icon" href="assets/img/brand/logo-3c.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/brand/logo-3c.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="3C — Cadre de Concertation Citoyenne">
+  <meta property="og:description" content="Pour une citoyenneté inclusive, sans distinction ni exclusion.">
+  <meta property="og:image" content="assets/img/brand/logo-3c.png">
+  <meta property="og:locale" content="fr_SN">
+
+  <!-- Applique le thème enregistré AVANT le rendu, pour éviter un flash de couleur -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('3c-theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
+  <!-- Polices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Feuilles de style (l'ordre compte) -->
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/sections.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Aller au contenu principal</a>
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <!-- =========================================================================
+       EN-TÊTE — barre flottante avec logo rond, langue et thème
+  ========================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar" aria-label="Navigation principale">
+
+      <a href="#accueil" class="brand">
+        <img class="brand__mark" src="assets/img/brand/logo-3c.png" alt="Logo du Cadre de Concertation Citoyenne" width="42" height="42">
+        <span>
+          <span class="brand__name">3C</span>
+          <span class="brand__tagline" data-i18n="footer.tagline">Cadre de Concertation Citoyenne</span>
+        </span>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a class="nav-link" href="#accueil" data-i18n="nav.home">Accueil</a></li>
+        <li><a class="nav-link" href="#apropos" data-i18n="nav.about">À propos</a></li>
+        <li><a class="nav-link" href="#services" data-i18n="nav.services">Services</a></li>
+        <li><a class="nav-link" href="#equipe" data-i18n="nav.team">Équipe</a></li>
+        <li><a class="nav-link" href="#faq" data-i18n="nav.faq">FAQ</a></li>
+      </ul>
+
+      <div class="nav-utils">
+        <button type="button" class="icon-btn" id="themeToggle" aria-pressed="false"
+                data-i18n-aria="aria.themeToggle" aria-label="Activer le mode sombre">
+          <i class="fa-solid fa-moon" id="themeIcon" aria-hidden="true"></i>
+        </button>
+
+        <button type="button" class="icon-btn icon-btn--lang" id="langToggle"
+                data-i18n-aria="aria.langToggle" aria-label="Switch to English">
+          <i class="fa-solid fa-globe" aria-hidden="true"></i>
+          <span id="langLabel">EN</span>
+        </button>
+
+        <span class="nav-divider" aria-hidden="true"></span>
+
+        <a href="#contact" class="btn btn--gradient" data-i18n="nav.contact">Contact</a>
+
+        <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu"
+                data-i18n-aria="aria.navToggle" aria-label="Ouvrir le menu de navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- =======================================================================
+         HERO
+    ======================================================================== -->
+    <section class="hero" id="accueil">
+
+      <!-- Photo de terrain en fond, estompée sur toute la moitié droite -->
+      <div class="hero__backdrop" aria-hidden="true">
+        <img src="assets/img/gallery/activite-05.jpg" alt="" loading="eager" fetchpriority="high">
+      </div>
+
+      <div class="container">
+        <div class="hero__grid">
+
+          <div>
+            <h1>
+              <span id="typing">Construisons une société plus inclusive pour tous</span><span class="typing-cursor" aria-hidden="true"></span>
+            </h1>
+
+            <p class="hero__lead" data-i18n="hero.lead">
+              Pour une citoyenneté inclusive, sans distinction ni exclusion.
+            </p>
+
+            <div class="hero__actions">
+              <a href="#services" class="btn btn--primary" data-i18n="hero.cta1">Découvrir nos actions</a>
+              <a href="#contact" class="btn btn--outline" data-i18n="hero.cta2">Nous contacter</a>
+            </div>
+          </div>
+
+          <div class="hero__visual">
+            <img class="hero__logo" src="assets/img/brand/logo-3c.png"
+                 alt="Logo du Cadre de Concertation Citoyenne (3C)"
+                 data-i18n-alt="hero.imgAlt" width="400" height="400">
+
+            <button type="button" class="hero__video" id="heroVideo"
+                    data-i18n-aria="aria.playVideo" aria-label="Lire la vidéo de présentation du 3C">
+              <img src="assets/video/poster.jpg" alt="" loading="lazy">
+              <span class="hero__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+              <span class="hero__video-label" data-i18n="hero.videoLabel">Présentation · 2:24</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <a class="scroll-cue" href="#apropos" data-i18n-aria="aria.scrollCue" aria-label="Aller à la section À propos">
+        <span data-i18n="hero.scroll">Continuer</span>
+        <span class="scroll-cue__rail" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- =======================================================================
+         À PROPOS
+    ======================================================================== -->
+    <section class="section section--light" id="apropos">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 data-i18n="about.title">À propos de 3C</h2>
+          <p data-i18n="about.subtitle">Une organisation au service de l'inclusion et de la citoyenneté.</p>
+        </div>
+
+        <div class="section-lede">
+          <p data-i18n="about.p1">
+            Le Cadre de Concertation Citoyenne (3C) est engagé dans la promotion de
+            l'inclusion, de l'égalité des chances, de la participation citoyenne et de
+            l'autonomisation des personnes en situation de handicap.
+          </p>
+          <p data-i18n="about.p2">
+            Nous agissons au plus près des communautés : accompagnement individuel,
+            formation, plaidoyer auprès des institutions et partenariats avec les
+            acteurs publics, associatifs et privés.
+          </p>
+        </div>
+
+        <!-- Damier : trois énoncés alternés avec trois photos de terrain -->
+        <div class="mosaic reveal">
+
+          <article class="mosaic__item">
+            <span class="mosaic__num">01</span>
+            <h3 data-i18n="about.vision.title">Vision</h3>
+            <p data-i18n="about.vision.desc">Une société inclusive où chaque citoyen participe pleinement à la vie sociale, économique et politique.</p>
+          </article>
+
+          <figure class="mosaic__shot">
+            <img src="assets/img/gallery/activite-06.jpg" alt="Forum citoyen organisé par le 3C à Dakar" loading="lazy">
+          </figure>
+
+          <article class="mosaic__item">
+            <span class="mosaic__num">02</span>
+            <h3 data-i18n="about.mission.title">Mission</h3>
+            <p data-i18n="about.mission.desc">Promouvoir les droits, l'autonomie et la participation des personnes en situation de handicap.</p>
+          </article>
+
+          <figure class="mosaic__shot">
+            <img src="assets/img/gallery/activite-04.jpg" alt="Atelier d'inclusion numérique animé par le 3C" loading="lazy">
+          </figure>
+
+          <article class="mosaic__item">
+            <span class="mosaic__num">03</span>
+            <h3 data-i18n="about.values.title">Valeurs</h3>
+            <p data-i18n="about.values.desc">Inclusion, solidarité, équité, transparence et citoyenneté.</p>
+          </article>
+
+          <figure class="mosaic__shot">
+            <img src="assets/img/gallery/activite-01.jpg" alt="Rencontre du 3C avec des familles de bénéficiaires" loading="lazy">
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SERVICES
+    ======================================================================== -->
+    <section class="section sequence-section" id="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 data-i18n="services.title">Nos services</h2>
+          <p data-i18n="services.subtitle">Six domaines d'intervention pour lever les obstacles à la pleine participation citoyenne.</p>
+        </div>
+
+        <div class="sequence">
+
+          <!-- Visuel épinglé : l'image suit le service actif -->
+          <div class="sequence__visual">
+            <div class="sequence__frame">
+              <img class="sequence__shot is-active" data-shot="1" src="assets/img/gallery/activite-08.jpg" alt="" aria-hidden="true" loading="lazy">
+              <img class="sequence__shot" data-shot="2" src="assets/img/gallery/activite-04.jpg" alt="" aria-hidden="true" loading="lazy">
+              <img class="sequence__shot" data-shot="3" src="assets/img/gallery/activite-03.jpg" alt="" aria-hidden="true" loading="lazy">
+              <img class="sequence__shot" data-shot="4" src="assets/img/gallery/activite-09.jpg" alt="" aria-hidden="true" loading="lazy">
+              <img class="sequence__shot" data-shot="5" src="assets/img/gallery/activite-06.jpg" alt="" aria-hidden="true" loading="lazy">
+              <img class="sequence__shot" data-shot="6" src="assets/img/gallery/activite-05.jpg" alt="" aria-hidden="true" loading="lazy">
+
+              <p class="sequence__caption is-active" data-caption="1" data-i18n="services.social.caption">Session d'accueil et d'orientation</p>
+              <p class="sequence__caption" data-caption="2" data-i18n="services.training.caption">Atelier d'inclusion numérique</p>
+              <p class="sequence__caption" data-caption="3" data-i18n="services.insertion.caption">Atelier collectif de préparation à l’emploi</p>
+              <p class="sequence__caption" data-caption="4" data-i18n="services.access.caption">Rencontre publique sur l’accessibilité</p>
+              <p class="sequence__caption" data-caption="5" data-i18n="services.advocacy.caption">Forum citoyen avec les institutions</p>
+              <p class="sequence__caption" data-caption="6" data-i18n="services.partnerships.caption">Signature de partenariat</p>
+            </div>
+
+            <ol class="sequence__dots" aria-hidden="true">
+              <li class="is-active" data-dot="1"></li>
+              <li data-dot="2"></li>
+              <li data-dot="3"></li>
+              <li data-dot="4"></li>
+              <li data-dot="5"></li>
+              <li data-dot="6"></li>
+            </ol>
+          </div>
+
+          <!-- Le service au centre de l'écran devient le service actif -->
+          <ol class="sequence__list">
+            <li class="sequence__item is-active" data-step="1">
+              <span class="sequence__num">01</span>
+              <h3 data-i18n="services.social.title">Accompagnement social</h3>
+              <p data-i18n="services.social.desc">Orientation et accompagnement administratif personnalisé : constitution des dossiers, accès aux droits, relais vers les services publics.</p>
+            </li>
+
+            <li class="sequence__item" data-step="2">
+              <span class="sequence__num">02</span>
+              <h3 data-i18n="services.training.title">Formation</h3>
+              <p data-i18n="services.training.desc">Renforcement de capacités et inclusion numérique, avec des modules adaptés aux déficiences visuelles.</p>
+            </li>
+
+            <li class="sequence__item" data-step="3">
+              <span class="sequence__num">03</span>
+              <h3 data-i18n="services.insertion.title">Insertion professionnelle</h3>
+              <p data-i18n="services.insertion.desc">Accès à l'emploi et entrepreneuriat inclusif : préparation, mise en relation et suivi après le placement.</p>
+            </li>
+
+            <li class="sequence__item" data-step="4">
+              <span class="sequence__num">04</span>
+              <h3 data-i18n="services.access.title">Accessibilité</h3>
+              <p data-i18n="services.access.desc">Promotion de l'accessibilité universelle des lieux, des services et de l'information.</p>
+            </li>
+
+            <li class="sequence__item" data-step="5">
+              <span class="sequence__num">05</span>
+              <h3 data-i18n="services.advocacy.title">Plaidoyer citoyen</h3>
+              <p data-i18n="services.advocacy.desc">Défense des droits des personnes en situation de handicap auprès des institutions et des collectivités.</p>
+            </li>
+
+            <li class="sequence__item" data-step="6">
+              <span class="sequence__num">06</span>
+              <h3 data-i18n="services.partnerships.title">Partenariats</h3>
+              <p data-i18n="services.partnerships.desc">Collaboration avec collectivités, ONG et entreprises pour démultiplier l'impact des actions.</p>
+            </li>
+          </ol>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         CHIFFRES CLÉS
+    ======================================================================== -->
+    <section class="section stats-band" aria-labelledby="stats-title">
+      <div class="container">
+        <div class="section-title">
+          <h2 id="stats-title" data-i18n="stats.title">Notre impact en chiffres</h2>
+          <p data-i18n="stats.subtitle">Dix années d'action aux côtés des personnes en situation de handicap.</p>
+        </div>
+
+        <div class="grid grid--4 reveal" data-counters>
+          <div class="stat-card">
+            <span class="stat-card__icon"><i class="fa-solid fa-users" aria-hidden="true"></i></span>
+            <p class="stat-card__value" data-target="500" data-suffix="+">0</p>
+            <p class="stat-card__label" data-i18n="stats.beneficiaries">Bénéficiaires</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__icon"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></span>
+            <p class="stat-card__value" data-target="25" data-suffix="+">0</p>
+            <p class="stat-card__label" data-i18n="stats.projects">Projets réalisés</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__icon"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i></span>
+            <p class="stat-card__value" data-target="15" data-suffix="+">0</p>
+            <p class="stat-card__label" data-i18n="stats.partners">Partenaires</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__icon"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span>
+            <p class="stat-card__value" data-target="10" data-suffix="">0</p>
+            <p class="stat-card__label" data-i18n="stats.years">Ans d'engagement</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         RÉALISATIONS
+    ======================================================================== -->
+    <section class="section section--light realisations" id="realisations">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 data-i18n="real.title">Nos réalisations</h2>
+          <p data-i18n="real.subtitle">Trois chantiers menés de bout en bout, de la conception au suivi des bénéficiaires.</p>
+        </div>
+
+        <ol class="timeline reveal">
+          <li class="timeline__item">
+            <span class="timeline__num">01</span>
+            <h3 data-i18n="real.forums.title">Forums citoyens</h3>
+            <p data-i18n="real.forums.desc">Organisation d'événements favorisant la participation citoyenne et le dialogue avec les institutions.</p>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__num">02</span>
+            <h3 data-i18n="real.digital.title">Formations numériques</h3>
+            <p data-i18n="real.digital.desc">Accompagnement des bénéficiaires aux outils digitaux, avec des modules adaptés aux déficiences visuelles.</p>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__num">03</span>
+            <h3 data-i18n="real.insertion.title">Insertion professionnelle</h3>
+            <p data-i18n="real.insertion.desc">Appui à l'employabilité et à l'entrepreneuriat inclusif, de la formation au placement.</p>
+          </li>
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         GALERIE
+    ======================================================================== -->
+    <section class="section section--light" id="galerie">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 data-i18n="gallery.title">Galerie d'activités</h2>
+          <p data-i18n="gallery.subtitle">Ateliers, formations et rencontres citoyennes organisés par le 3C.</p>
+        </div>
+
+        <div class="gallery reveal">
+          <button type="button" class="gallery__item">
+            <img src="assets/img/gallery/activite-10.jpg" alt="Membres du 3C lors d'une activité communautaire d'inclusion" loading="lazy">
+          </button>
+          <button type="button" class="gallery__item">
+            <img src="assets/img/gallery/activite-01.jpg" alt="Activité collaborative pour l'autonomisation des personnes en situation de handicap" loading="lazy">
+          </button>
+          <button type="button" class="gallery__item">
+            <img src="assets/img/gallery/activite-02.jpg" alt="Activité de sensibilisation à l'égalité des chances" loading="lazy">
+          </button>
+          <button type="button" class="gallery__item">
+            <img src="assets/img/gallery/activite-03.jpg" alt="Rencontre citoyenne autour de la solidarité sociale" loading="lazy">
+          </button>
+          <button type="button" class="gallery__item">
+            <img src="assets/img/gallery/activite-04.jpg" alt="Atelier de formation à l'inclusion numérique" loading="lazy">
+          </button>
+          <button type="button" class="gallery__item">
+            <img src="assets/img/gallery/activite-05.jpg" alt="Remise d'attestations à l'issue d'une formation" loading="lazy">
+          </button>
+          <button type="button" class="gallery__item">
+            <img src="assets/img/gallery/activite-06.jpg" alt="Session de renforcement de capacités pour l'autonomisation" loading="lazy">
+          </button>
+          <button type="button" class="gallery__item">
+            <img src="assets/img/gallery/activite-08.jpg" alt="Forum citoyen sur la participation active des personnes en situation de handicap" loading="lazy">
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         TÉMOIGNAGES
+    ======================================================================== -->
+    <section class="section" id="temoignages">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 data-i18n="testimonials.title">Témoignages</h2>
+          <p data-i18n="testimonials.subtitle">Bénéficiaires, partenaires et bénévoles racontent leur expérience du 3C.</p>
+        </div>
+
+        <figure class="quotes">
+          <span class="quotes__mark" aria-hidden="true">&ldquo;</span>
+
+          <div class="quotes__body" id="quoteBody">
+            <blockquote id="quoteText" aria-live="polite">
+              Grâce à 3C, j'ai pu suivre une formation numérique et renforcer mon autonomie.
+            </blockquote>
+            <figcaption class="quotes__author" id="quoteAuthor">Fatou D., bénéficiaire</figcaption>
+          </div>
+
+          <div class="quotes__dots" id="quoteDots" role="tablist" aria-label="Choisir un témoignage"></div>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         ÉQUIPE
+    ======================================================================== -->
+    <section class="section section--light" id="equipe">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 data-i18n="team.title">Notre équipe</h2>
+          <p data-i18n="team.subtitle">Une équipe engagée au quotidien auprès des personnes en situation de handicap.</p>
+        </div>
+
+        <div class="team reveal">
+          <article class="team__member">
+            <div class="team__portrait">
+              <img src="assets/img/team/adama-thioube.jpg" alt="Portrait d'Adama Thioube, président du 3C" loading="lazy">
+            </div>
+            <div>
+              <span class="team__role" data-i18n="team.m1.role">Président</span>
+              <h3 class="team__name" data-i18n="team.m1.name">Adama Thioube</h3>
+              <p data-i18n="team.m1.desc">Chargé de la communication et du développement des projets. Formateur en informatique pour les personnes non-voyantes et malvoyantes.</p>
+            </div>
+          </article>
+          <article class="team__member">
+            <div class="team__portrait">
+              <img src="assets/img/team/diatta.jpg" alt="Portrait du coordinateur national du 3C" loading="lazy">
+            </div>
+            <div>
+              <span class="team__role" data-i18n="team.m2.role">Coordinateur national</span>
+              <h3 class="team__name" data-i18n="team.m2.name">M. Diatta</h3>
+              <p data-i18n="team.m2.desc">Relations institutionnelles et coordination des programmes sur le terrain.</p>
+            </div>
+          </article>
+          <article class="team__member">
+            <div class="team__portrait">
+              <img src="assets/img/team/oumou.jpg" alt="Portrait de la secrétaire administrative du 3C" loading="lazy">
+            </div>
+            <div>
+              <span class="team__role" data-i18n="team.m3.role">Secrétaire administrative</span>
+              <h3 class="team__name" data-i18n="team.m3.name">Oumou</h3>
+              <p data-i18n="team.m3.desc">Gestion administrative et opérationnelle de l'organisation.</p>
+            </div>
+          </article>
+          <article class="team__member">
+            <div class="team__portrait">
+              <img src="assets/img/team/mouhamed.jpg" alt="Portrait du responsable des systèmes d'information du 3C" loading="lazy">
+            </div>
+            <div>
+              <span class="team__role" data-i18n="team.m4.role">Systèmes d'information</span>
+              <h3 class="team__name" data-i18n="team.m4.name">Mouhamed</h3>
+              <p data-i18n="team.m4.desc">Responsable de la digitalisation et formateur en informatique pour les personnes non-voyantes et malvoyantes.</p>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         PARTENAIRES
+    ======================================================================== -->
+    <section class="section" id="partenaires">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 data-i18n="partners.title">Nos partenaires</h2>
+          <p data-i18n="partners.subtitle">Institutions, entreprises et organisations qui soutiennent nos actions.</p>
+        </div>
+
+        <ul class="partners reveal">
+          <li><img src="assets/img/partners/giz.jpg" alt="GIZ" loading="lazy"></li>
+          <li><img src="assets/img/partners/stm.jpg" alt="STMicroelectronics Foundation" loading="lazy"></li>
+          <li><img src="assets/img/partners/sightsavers.jpg" alt="Sightsavers" loading="lazy"></li>
+          <li><img src="assets/img/partners/biscuiterie.jpg" alt="Biscuiterie" data-shape="square" loading="lazy"></li>
+          <li><img src="assets/img/partners/thiaroye.jpg" alt="Commune de Thiaroye" data-shape="square" loading="lazy"></li>
+          <li><img src="assets/img/partners/agence.jpg" alt="Agence partenaire du 3C" data-shape="square" loading="lazy"></li>
+        </ul>
+
+        <p class="partners__note">
+          <span data-i18n="partners.note">Vous souhaitez soutenir nos actions ?</span>
+          <a href="#contact" data-i18n="partners.noteLink">Écrivez-nous</a>
+        </p>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         FAQ
+    ======================================================================== -->
+    <section class="section section--light" id="faq">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 data-i18n="faq.title">Questions fréquentes</h2>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion__item">
+            <button type="button" class="accordion__trigger" aria-expanded="false" aria-controls="faq-panel-1" id="faq-trigger-1">
+              <span data-i18n="faq.q1">Qui peut bénéficier des services de 3C ?</span>
+              <span class="accordion__icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="accordion__panel" id="faq-panel-1" role="region" aria-labelledby="faq-trigger-1">
+              <p data-i18n="faq.a1">Toute personne en situation de handicap ainsi que leurs familles, sans condition d'âge ni de type de handicap.</p>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <button type="button" class="accordion__trigger" aria-expanded="false" aria-controls="faq-panel-2" id="faq-trigger-2">
+              <span data-i18n="faq.q2">Comment devenir membre ?</span>
+              <span class="accordion__icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="accordion__panel" id="faq-panel-2" role="region" aria-labelledby="faq-trigger-2">
+              <p data-i18n="faq.a2">Contactez notre équipe via le formulaire ci-dessous ou par téléphone : nous vous expliquerons la démarche d'adhésion.</p>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <button type="button" class="accordion__trigger" aria-expanded="false" aria-controls="faq-panel-3" id="faq-trigger-3">
+              <span data-i18n="faq.q3">Comment soutenir les activités de 3C ?</span>
+              <span class="accordion__icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+            </button>
+            <div class="accordion__panel" id="faq-panel-3" role="region" aria-labelledby="faq-trigger-3">
+              <p data-i18n="faq.a3">Vous pouvez devenir partenaire, bénévole ou contributeur. Écrivez-nous pour définir ensemble la forme de soutien la plus utile.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         CONTACT
+    ======================================================================== -->
+    <section class="section" id="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 data-i18n="contact.title">Contact</h2>
+          <p data-i18n="contact.subtitle">Une question, un projet, une demande d'accompagnement ? Notre équipe vous répond.</p>
+        </div>
+
+        <div class="contact-grid">
+
+          <div class="contact-info">
+            <h3 data-i18n="contact.info.title">Nos coordonnées</h3>
+            <ul class="contact-list">
+              <li>
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                <span data-i18n="contact.address">Usine Niary Tally, Parcelles n°966, Dakar, Sénégal</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                <a href="mailto:contact@3c.sn">contact@3c.sn</a>
+              </li>
+              <li>
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                <a href="tel:+221774757146">+221 77 475 71 46</a>
+              </li>
+              <li>
+                <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                <span data-i18n="contact.hours">Lundi – Vendredi : 9h – 17h</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-card">
+            <h3 data-i18n="form.title">Envoyer un message</h3>
+            <form class="form" id="contactForm" novalidate>
+              <div class="field">
+                <label for="fullname" data-i18n="form.name">Nom complet</label>
+                <input type="text" id="fullname" name="fullname" autocomplete="name" required
+                       placeholder="Votre nom" data-i18n-placeholder="form.namePh">
+              </div>
+              <div class="field">
+                <label for="email" data-i18n="form.email">Adresse e-mail</label>
+                <input type="email" id="email" name="email" autocomplete="email" required
+                       placeholder="vous@exemple.com" data-i18n-placeholder="form.emailPh">
+              </div>
+              <div class="field">
+                <label for="message" data-i18n="form.message">Votre message</label>
+                <textarea id="message" name="message" rows="6" required
+                          placeholder="Comment pouvons-nous vous aider ?" data-i18n-placeholder="form.messagePh"></textarea>
+              </div>
+              <div>
+                <button type="submit" class="btn btn--submit" data-i18n="form.submit">Envoyer le message</button>
+              </div>
+              <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       PIED DE PAGE
+  ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#accueil" class="brand">
+            <img class="brand__mark" src="assets/img/brand/logo-3c.png" alt="Logo du Cadre de Concertation Citoyenne" width="42" height="42" loading="lazy">
+            <span>
+              <span class="brand__name">3C</span>
+              <span class="brand__tagline" data-i18n="footer.tagline">Cadre de Concertation Citoyenne</span>
+            </span>
+          </a>
+
+          <p data-i18n="footer.desc">Pour une citoyenneté inclusive, sans distinction ni exclusion.</p>
+
+          <ul class="footer-contact">
+            <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:contact@3c.sn">contact@3c.sn</a></li>
+            <li><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+221774757146">+221 77 475 71 46</a></li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span data-i18n="contact.address">Usine Niary Tally, Parcelles n°966, Dakar, Sénégal</span></li>
+            <li><i class="fa-solid fa-clock" aria-hidden="true"></i><span data-i18n="contact.hours">Lundi – Vendredi : 9h – 17h</span></li>
+          </ul>
+
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/share/19GT5GEurC/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/3c_senegal/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://www.tiktok.com/@3c_officiel" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+            <a href="https://linkedin.com/company/votrepage" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="https://youtube.com/votrepage" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="https://x.com/votrepage" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 data-i18n="footer.col.nav">Navigation</h4>
+          <ul class="footer-nav">
+            <li><a href="#accueil" data-i18n="nav.home">Accueil</a></li>
+            <li><a href="#apropos" data-i18n="nav.about">À propos</a></li>
+            <li><a href="#services" data-i18n="nav.services">Services</a></li>
+            <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 data-i18n="footer.col.resources">Ressources</h4>
+          <ul class="footer-nav">
+            <li><a href="#equipe" data-i18n="footer.link.team">Notre équipe</a></li>
+            <li><a href="#galerie" data-i18n="footer.link.gallery">Galerie d'activités</a></li>
+            <li><a href="#contact"><span data-i18n="footer.link.reports">Rapports d'activités</span><span class="footer-soon" data-i18n="footer.soon">Bientôt</span></a></li>
+            <li><a href="#contact"><span data-i18n="footer.link.press">Espace presse</span><span class="footer-soon" data-i18n="footer.soon">Bientôt</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 data-i18n="footer.col.legal">Légal</h4>
+          <ul class="footer-nav">
+            <li><a href="#" data-i18n="footer.link.privacy">Confidentialité</a></li>
+            <li><a href="#" data-i18n="footer.link.terms">Conditions d'utilisation</a></li>
+            <li><a href="#" data-i18n="footer.link.cookies">Politique de cookies</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="year">2026</span> Cadre de Concertation Citoyenne (3C). <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+        <div class="footer-bottom-links">
+          <a href="#" data-i18n="footer.link.privacy">Confidentialité</a>
+          <a href="#" data-i18n="footer.link.terms">Conditions d'utilisation</a>
+          <a href="#" data-i18n="footer.link.cookies">Politique de cookies</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       BOUTONS FLOTTANTS
+  ========================================================================== -->
+  <div class="float-stack">
+    <button type="button" class="float-btn float-btn--top" id="topBtn"
+            data-i18n-aria="aria.topBtn" aria-label="Retour en haut de page">
+      <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    </button>
+    <a class="float-btn float-btn--whatsapp" href="https://wa.me/221774757146" target="_blank" rel="noopener noreferrer"
+       data-i18n-aria="aria.whatsapp" aria-label="Nous contacter sur WhatsApp">
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <!-- Visionneuse de la galerie -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image agrandie">
+    <button type="button" class="lightbox__close" id="lightboxClose"
+            data-i18n-aria="aria.lightboxClose" aria-label="Fermer l'image">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+
+    <div class="lightbox__stage">
+      <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightboxPrev"
+              data-i18n-aria="aria.lightboxPrev" aria-label="Image précédente">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+      </button>
+
+      <img id="lightboxImage" src="" alt="">
+
+      <button type="button" class="lightbox__nav lightbox__nav--next" id="lightboxNext"
+              data-i18n-aria="aria.lightboxNext" aria-label="Image suivante">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      </button>
+
+      <p class="lightbox__counter" id="lightboxCounter" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <!-- Lecteur de la vidéo de présentation -->
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Vidéo de présentation du 3C">
+    <button type="button" class="video-modal__close" id="videoClose"
+            data-i18n-aria="aria.videoClose" aria-label="Fermer la vidéo">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+
+    <div class="video-modal__frame">
+      <video id="videoPlayer" controls playsinline preload="none" poster="assets/video/poster.jpg">
+        <source src="assets/video/presentation-3c.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- Scripts (l'ordre compte) -->
+  <script src="assets/js/translations.js" defer></script>
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/theme.js" defer></script>
+  <script src="assets/js/navigation.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/parallax.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
