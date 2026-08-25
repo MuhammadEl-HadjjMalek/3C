@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang="fr" data-theme="light" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,8 @@
   <title>3C — Cadre de Concertation Citoyenne</title>
   <meta name="description" content="Le Cadre de Concertation Citoyenne (3C) œuvre pour l'inclusion sociale, l'autonomisation et la participation active des personnes en situation de handicap au Sénégal.">
   <meta name="theme-color" content="#005f73">
-  <link rel="icon" href="assets/img/brand/logo-3c.png" type="image/png">
-  <link rel="apple-touch-icon" href="assets/img/brand/logo-3c.png">
+  <link rel="icon" href="assets/img/brand/logo-3c-mark.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/brand/logo-3c-mark.png">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="3C — Cadre de Concertation Citoyenne">
@@ -26,8 +26,133 @@
       } catch (e) {
         document.documentElement.setAttribute('data-theme', 'light');
       }
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('is-loading');
     })();
   </script>
+
+
+  <!-- Voile de chargement : styles en ligne pour qu'il peigne dès le premier
+       octet, avant même l'arrivée des feuilles externes. -->
+  <style>
+    .preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: grid;
+      place-items: center;
+      background: #ffffff;
+      clip-path: inset(0 0 0 0);
+      transition: clip-path .9s cubic-bezier(.76, 0, .24, 1);
+    }
+
+    :root[data-theme="dark"] .preloader { background: #061419; }
+
+    .preloader__inner {
+      display: grid;
+      justify-items: center;
+      gap: 1.5rem;
+      transition: opacity .4s ease, transform .4s ease;
+    }
+
+    .preloader__mark {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 168px;
+      height: 168px;
+    }
+
+    .preloader__mark img {
+      width: 86px;
+      height: 86px;
+      object-fit: contain;
+    }
+
+    /* Anneau de progression, aux couleurs de la charte */
+    .preloader__ring {
+      position: absolute;
+      inset: 0;
+      transform: rotate(-90deg);
+    }
+
+    .preloader__ring circle {
+      fill: none;
+      stroke-width: 3;
+      stroke-linecap: round;
+    }
+
+    .preloader__track { stroke: #e2eaeb; }
+
+    :root[data-theme="dark"] .preloader__track { stroke: #1e343c; }
+
+    .preloader__bar {
+      stroke: url(#preloaderGradient);
+      stroke-dasharray: 339.3;              /* 2 pi r, r = 54 */
+      stroke-dashoffset: 339.3;
+      transition: stroke-dashoffset .45s cubic-bezier(.3, .7, .3, 1);
+    }
+
+    .preloader__label {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: .6875rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: #64787f;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Sortie : le voile se retire vers le haut */
+    .preloader.is-done {
+      clip-path: inset(0 0 100% 0);
+      pointer-events: none;
+    }
+
+    .preloader.is-done .preloader__inner {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+
+    /* Tant que le voile est là, la page ne défile pas */
+    :root.is-loading body { overflow: hidden; }
+
+    /* Entrée échelonnée du hero, une fois le voile retiré */
+    .hero__enter > * {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    body.is-ready .hero__enter > * {
+      opacity: 1;
+      transform: none;
+      transition: opacity .7s cubic-bezier(.2, .7, .3, 1),
+                  transform .7s cubic-bezier(.2, .7, .3, 1);
+    }
+
+    body.is-ready .hero__enter > *:nth-child(1) { transition-delay: .05s; }
+    body.is-ready .hero__enter > *:nth-child(2) { transition-delay: .16s; }
+    body.is-ready .hero__enter > *:nth-child(3) { transition-delay: .27s; }
+    body.is-ready .hero__visual { animation: hero-in .9s .2s cubic-bezier(.2, .7, .3, 1) both; }
+
+    @keyframes hero-in {
+      from { opacity: 0; transform: scale(.94); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* Sans script, le voile ne doit jamais bloquer la page */
+    .no-js .preloader { display: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .preloader { transition: opacity .2s linear; }
+      .preloader.is-done { clip-path: none; opacity: 0; }
+      .hero__enter > *, body.is-ready .hero__visual {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
 
   <!-- Polices -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,6 +170,30 @@
 </head>
 
 <body>
+  <!-- =========================================================================
+       VOILE DE CHARGEMENT
+       Retiré par assets/js/preloader.js dès que les visuels sont prêts.
+  ========================================================================== -->
+  <div class="preloader" id="preloader" role="status" aria-label="Chargement du site">
+    <div class="preloader__inner">
+      <div class="preloader__mark">
+        <svg class="preloader__ring" viewBox="0 0 120 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="preloaderGradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#005f73"></stop>
+              <stop offset="55%" stop-color="#0a9396"></stop>
+              <stop offset="100%" stop-color="#ee9b00"></stop>
+            </linearGradient>
+          </defs>
+          <circle class="preloader__track" cx="60" cy="60" r="54"></circle>
+          <circle class="preloader__bar" id="preloaderBar" cx="60" cy="60" r="54"></circle>
+        </svg>
+        <img src="assets/img/brand/logo-3c-mark.png" alt="" width="86" height="86">
+      </div>
+      <p class="preloader__label"><span id="preloaderPercent">0</span>&thinsp;%</p>
+    </div>
+  </div>
+
   <a class="skip-link" href="#main" data-i18n="skip">Aller au contenu principal</a>
   <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
 
@@ -55,7 +204,7 @@
     <nav class="navbar" aria-label="Navigation principale">
 
       <a href="#accueil" class="brand">
-        <img class="brand__mark" src="assets/img/brand/logo-3c.png" alt="Logo du Cadre de Concertation Citoyenne" width="42" height="42">
+        <img class="brand__mark" src="assets/img/brand/logo-3c-mark.png" alt="Logo du Cadre de Concertation Citoyenne" width="42" height="42">
         <span>
           <span class="brand__name">3C</span>
           <span class="brand__tagline" data-i18n="footer.tagline">Cadre de Concertation Citoyenne</span>
@@ -109,7 +258,7 @@
       <div class="container">
         <div class="hero__grid">
 
-          <div>
+          <div class="hero__enter">
             <h1>
               <span id="typing">Construisons une société plus inclusive pour tous</span><span class="typing-cursor" aria-hidden="true"></span>
             </h1>
@@ -631,7 +780,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#accueil" class="brand">
-            <img class="brand__mark" src="assets/img/brand/logo-3c.png" alt="Logo du Cadre de Concertation Citoyenne" width="42" height="42" loading="lazy">
+            <img class="brand__mark" src="assets/img/brand/logo-3c-mark.png" alt="Logo du Cadre de Concertation Citoyenne" width="42" height="42" loading="lazy">
             <span>
               <span class="brand__name">3C</span>
               <span class="brand__tagline" data-i18n="footer.tagline">Cadre de Concertation Citoyenne</span>
@@ -753,6 +902,7 @@
   </div>
 
   <!-- Scripts (l'ordre compte) -->
+  <script src="assets/js/preloader.js" defer></script>
   <script src="assets/js/translations.js" defer></script>
   <script src="assets/js/i18n.js" defer></script>
   <script src="assets/js/theme.js" defer></script>
