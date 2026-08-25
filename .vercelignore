@@ -1,0 +1,6 @@
+# Version d'origine, conservée pour référence — inutile en production
+legacy/
+
+# Fichiers de travail
+*.log
+.DS_Store
