@@ -1,4 +1,4 @@
-# 3C — Cadre de Concertation Citoyenne
+# 3C — Cadre de Concertation Citoyenne  
 
 Site vitrine du Cadre de Concertation Citoyenne (3C), organisation sénégalaise
 engagée pour l'inclusion sociale, l'autonomisation et la participation des
@@ -7,7 +7,7 @@ personnes en situation de handicap.
 Site statique, bilingue français / anglais, thème clair et sombre.
 **Aucun outil de compilation** : pas de `npm install`, pas d'étape de build.
 
----
+--- 
 
 ## Démarrer
 
