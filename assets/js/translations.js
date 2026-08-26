@@ -1,14 +1,18 @@
 /* =============================================================================
-   3C — Dictionnaire de traduction (FR / EN)
-   Chaque clé correspond à un attribut data-i18n* dans le HTML.
+   3C — Textes du site (FR / EN)
+   Source unique : aucun texte traduisible n'est écrit en dur dans le HTML.
+   Les composants portent seulement des attributs data-i18n* dont la valeur
+   est un chemin dans les arbres ci-dessous (« about.vision.title »,
+   « team.members.0.role »…).
    ========================================================================== */
 'use strict';
 
 window.App = window.App || {};
 
 App.translations = {
+
   fr: {
-    'skip': 'Aller au contenu principal',
+    skip: 'Aller au contenu principal',
 
     'nav.home': 'Accueil',
     'nav.about': 'À propos',
@@ -42,18 +46,18 @@ App.translations = {
     'about.values.desc': 'Inclusion, solidarité, équité, transparence et citoyenneté.',
     'team.title': 'Notre équipe',
     'team.subtitle': "Une équipe engagée au quotidien auprès des personnes en situation de handicap.",
-    'team.m1.name': 'M.Adama THIOUBE',
+    'team.m1.name': 'Adama Thioube',
     'team.m1.role': 'Président',
-    'team.m1.desc': "Directeur des programmes de formation, de la stratégie et du développement.",
-    'team.m2.name': 'M.Papa Aliou DIATTA',
-    'team.m2.role': 'Directeur administratif',
-    'team.m2.desc': 'Coordinateur national.',
-    'team.m3.name': 'Oumou LY',
+    'team.m1.desc': "Chargé de la communication et du développement des projets. Formateur en informatique pour les personnes non-voyantes et malvoyantes.",
+    'team.m2.name': 'M. Diatta',
+    'team.m2.role': 'Coordinateur national',
+    'team.m2.desc': 'Relations institutionnelles et coordination des programmes sur le terrain.',
+    'team.m3.name': 'Oumou',
     'team.m3.role': 'Secrétaire administrative',
     'team.m3.desc': 'Gestion administrative et opérationnelle de l’organisation.',
-    'team.m4.name': 'Fousseynou DJIMERA',
+    'team.m4.name': 'Mouhamed',
     'team.m4.role': 'Systèmes d’information',
-    'team.m4.desc': 'Chargé de la digitalisation et de la communication.',
+    'team.m4.desc': "Responsable de la digitalisation et formateur en informatique pour les personnes non-voyantes et malvoyantes.",
     'gallery.title': "Galerie d'activités",
     'gallery.subtitle': "Ateliers, formations et rencontres citoyennes organisés par le 3C.",
 
@@ -182,18 +186,18 @@ App.translations = {
     'about.values.desc': 'Inclusion, solidarity, equity, transparency and citizenship.',
     'team.title': 'Our team',
     'team.subtitle': 'A team committed every day to people with disabilities.',
-    'team.m1.name': 'M. Adama THIOUBE',
+    'team.m1.name': 'M.Adama THIOUBE',
     'team.m1.role': 'President',
-    'team.m1.desc': 'Director of Training Programs, Strategy and Development.',
-    'team.m2.name': 'M. Papa Aliou DIATTA',
-    'team.m2.role': 'Administrative Director',
-    'team.m2.desc': 'National Coordinator.',
+    'team.m1.desc': 'In charge of communications and project development. IT trainer for blind and partially sighted people.',
+    'team.m2.name': 'M.Papa Aliou DIATTA',
+    'team.m2.role': 'Directeur administratif',
+    'team.m2.desc': 'Coordinateur national.',
     'team.m3.name': 'Oumou LY',
-    'team.m3.role': 'Administrative Secretary',
-    'team.m3.desc': 'Administrative and operational management of the organization.',
+    'team.m3.role': 'Secrétaire administrative',
+    'team.m3.desc': 'Gestion administrative et opérationnelle de l\'organisation.',
     'team.m4.name': 'Fousseynou DJIMERA',
-    'team.m4.role': 'Information Systems',
-    'team.m4.desc': 'Head of Digitalization and Communication.',
+    'team.m4.role': 'Systèmes d\'information',
+    'team.m4.desc': 'Chargé de la digitalisation et de la communication.',
     'gallery.title': 'Activity gallery',
     'gallery.subtitle': 'Workshops, training sessions and citizen gatherings organised by 3C.',
 

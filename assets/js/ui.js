@@ -156,11 +156,12 @@ App.ui = (function () {
     var dots = [];
 
     function list() {
-      return App.testimonials[App.i18n.current] || App.testimonials.fr;
+      return App.i18n.list('testimonials.items');
     }
 
     function paint() {
       var item = list()[index];
+      if (!item) return;
       text.textContent = item.text;
       author.textContent = item.author;
       dots.forEach(function (dot, i) {
@@ -189,7 +190,7 @@ App.ui = (function () {
         dot.className = 'quotes__dot';
         dot.setAttribute('role', 'tab');
         dot.setAttribute('aria-selected', String(i === index));
-        dot.setAttribute('aria-label', 'Témoignage ' + (i + 1));
+        dot.setAttribute('aria-label', App.i18n.t('testimonials.dotLabel', { n: i + 1 }));
         dot.addEventListener('click', function () {
           stop();
           show(i);
@@ -200,7 +201,7 @@ App.ui = (function () {
     }
 
     function start() {
-      if (reducedMotion) return;
+      if (reducedMotion || list().length < 2) return;
       stop();
       timer = setInterval(function () {
         show((index + 1) % list().length);

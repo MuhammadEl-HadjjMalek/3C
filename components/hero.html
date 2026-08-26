@@ -1,0 +1,44 @@
+<!-- Hero : titre dactylographié, appels à l'action et vidéo de présentation -->
+<section class="hero" id="accueil">
+
+  <!-- Photo de terrain en fond, estompée sur toute la moitié droite -->
+  <div class="hero__backdrop" aria-hidden="true">
+    <img src="assets/img/gallery/activite-05.jpg" alt="" loading="eager" fetchpriority="high">
+  </div>
+
+  <div class="container">
+    <div class="hero__grid">
+
+      <div class="hero__enter">
+        <h1>
+          <!-- Écrit lettre par lettre par App.ui, depuis hero.title -->
+          <span id="typing"></span><span class="typing-cursor" aria-hidden="true"></span>
+        </h1>
+
+        <p class="hero__lead" data-i18n="hero.lead"></p>
+
+        <div class="hero__actions">
+          <a href="#services" class="btn btn--primary" data-i18n="hero.cta1"></a>
+          <a href="#contact" class="btn btn--outline" data-i18n="hero.cta2"></a>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <img class="hero__logo" src="assets/img/brand/logo-3c.png" alt=""
+             data-i18n-alt="hero.imgAlt" width="400" height="400">
+
+        <button type="button" class="hero__video" id="heroVideo" data-i18n-aria="aria.playVideo">
+          <img src="assets/video/poster.jpg" alt="" loading="lazy">
+          <span class="hero__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+          <span class="hero__video-label" data-i18n="hero.videoLabel"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <a class="scroll-cue" href="#apropos" data-i18n-aria="aria.scrollCue">
+    <span data-i18n="hero.scroll"></span>
+    <span class="scroll-cue__rail" aria-hidden="true"></span>
+  </a>
+</section>

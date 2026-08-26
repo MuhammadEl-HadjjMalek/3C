@@ -1,0 +1,44 @@
+<!-- En-tête : barre flottante, logo rond, langue et thème -->
+<header class="site-header" id="siteHeader">
+  <nav class="navbar" data-i18n-aria="nav.ariaMain">
+
+    <a href="#accueil" class="brand">
+      <img class="brand__mark" src="assets/img/brand/logo-3c-mark.png" alt=""
+           data-i18n-alt="footer.logoAlt" width="42" height="42">
+      <span>
+        <span class="brand__name">3C</span>
+        <span class="brand__tagline" data-i18n="footer.tagline"></span>
+      </span>
+    </a>
+
+    <ul class="nav-menu" id="navMenu">
+      <li><a class="nav-link" href="#accueil" data-i18n="nav.home"></a></li>
+      <li><a class="nav-link" href="#apropos" data-i18n="nav.about"></a></li>
+      <li><a class="nav-link" href="#services" data-i18n="nav.services"></a></li>
+      <li><a class="nav-link" href="#equipe" data-i18n="nav.team"></a></li>
+      <li><a class="nav-link" href="#faq" data-i18n="nav.faq"></a></li>
+    </ul>
+
+    <div class="nav-utils">
+      <button type="button" class="icon-btn" id="themeToggle" aria-pressed="false"
+              data-i18n-aria="aria.themeToggle">
+        <i class="fa-solid fa-moon" id="themeIcon" aria-hidden="true"></i>
+      </button>
+
+      <button type="button" class="icon-btn icon-btn--lang" id="langToggle"
+              data-i18n-aria="aria.langToggle">
+        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+        <span id="langLabel">EN</span>
+      </button>
+
+      <span class="nav-divider" aria-hidden="true"></span>
+
+      <a href="#contact" class="btn btn--gradient" data-i18n="nav.contact"></a>
+
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu"
+              data-i18n-aria="aria.navToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>

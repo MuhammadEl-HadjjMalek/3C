@@ -1,0 +1,46 @@
+<!-- Couches par-dessus la page : boutons flottants, visionneuse, lecteur vidéo -->
+<div class="float-stack">
+  <button type="button" class="float-btn float-btn--top" id="topBtn" data-i18n-aria="aria.topBtn">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+  <a class="float-btn float-btn--whatsapp" href="https://wa.me/221774757146" target="_blank" rel="noopener noreferrer"
+     data-i18n-aria="aria.whatsapp">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+  </a>
+</div>
+
+<!-- Visionneuse de la galerie -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" data-i18n-aria="aria.lightbox">
+  <button type="button" class="lightbox__close" id="lightboxClose" data-i18n-aria="aria.lightboxClose">
+    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+  </button>
+
+  <div class="lightbox__stage">
+    <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightboxPrev"
+            data-i18n-aria="aria.lightboxPrev">
+      <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+    </button>
+
+    <img id="lightboxImage" src="" alt="">
+
+    <button type="button" class="lightbox__nav lightbox__nav--next" id="lightboxNext"
+            data-i18n-aria="aria.lightboxNext">
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+
+    <p class="lightbox__counter" id="lightboxCounter" aria-live="polite"></p>
+  </div>
+</div>
+
+<!-- Lecteur de la vidéo de présentation -->
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" data-i18n-aria="aria.videoModal">
+  <button type="button" class="video-modal__close" id="videoClose" data-i18n-aria="aria.videoClose">
+    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+  </button>
+
+  <div class="video-modal__frame">
+    <video id="videoPlayer" controls playsinline preload="none" poster="assets/video/poster.jpg">
+      <source src="assets/video/presentation-3c.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>

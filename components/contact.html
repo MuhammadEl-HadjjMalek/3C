@@ -1,0 +1,61 @@
+<!-- Contact : coordonnées et formulaire -->
+<section class="section" id="contact">
+  <div class="container">
+
+    <div class="section-title">
+      <h2 data-i18n="contact.title"></h2>
+      <p data-i18n="contact.subtitle"></p>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <h3 data-i18n="contact.infoTitle"></h3>
+        <ul class="contact-list">
+          <li>
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span data-i18n="contact.address"></span>
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <a href="mailto:contact@3c.sn">contact@3c.sn</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <a href="tel:+221774757146">+221 77 475 71 46</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            <span data-i18n="contact.hours"></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contact-card">
+        <h3 data-i18n="form.title"></h3>
+        <form class="form" id="contactForm" novalidate>
+          <div class="field">
+            <label for="fullname" data-i18n="form.name"></label>
+            <input type="text" id="fullname" name="fullname" autocomplete="name" required
+                   data-i18n-placeholder="form.namePh">
+          </div>
+          <div class="field">
+            <label for="email" data-i18n="form.email"></label>
+            <input type="email" id="email" name="email" autocomplete="email" required
+                   data-i18n-placeholder="form.emailPh">
+          </div>
+          <div class="field">
+            <label for="message" data-i18n="form.message"></label>
+            <textarea id="message" name="message" rows="6" required
+                      data-i18n-placeholder="form.messagePh"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="btn btn--submit" data-i18n="form.submit"></button>
+          </div>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
