@@ -18,6 +18,7 @@ App.preloader = (function () {
   var total = 0;
   var done = 0;
   var shown = 0;
+  var started = false;
   var finished = false;
 
   function paint(ratio) {
@@ -29,6 +30,8 @@ App.preloader = (function () {
 
   function finish() {
     if (finished) return;
+    veil = veil || document.getElementById('preloader');
+    if (!veil) return;
     finished = true;
 
     paint(1);
@@ -75,6 +78,9 @@ App.preloader = (function () {
   }
 
   function init() {
+    if (started) return;
+    started = true;
+
     veil = document.getElementById('preloader');
     if (!veil) return;
 
@@ -100,9 +106,7 @@ App.preloader = (function () {
   return { init: init };
 })();
 
-/* Le voile se gère seul, sans attendre l'initialisation du reste du site */
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', App.preloader.init);
-} else {
-  App.preloader.init();
-}
+/* Le voile est démarré par main.js, une fois les composants assemblés : c'est
+   seulement là que les visuels à suivre existent. Si cet assemblage échoue,
+   ce filet retire quand même le voile — la page ne reste jamais masquée. */
+setTimeout(App.preloader.init, 7000);

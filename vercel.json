@@ -1,5 +1,5 @@
-{           
-  "cleanUrls": true,
+{
+  "cleanUrls": false,
   "trailingSlash": false,
   "headers": [
     {
@@ -25,6 +25,12 @@
     },
     {
       "source": "/assets/(css|js)/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/components/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
       ]
